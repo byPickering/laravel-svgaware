@@ -1,0 +1,34 @@
+{
+    "name": "pickering/laravel-svgaware",
+    "description": "SVGAware simplifies SVG management in Laravel applications by eliminating duplicated markup and removing the need to edit complex SVG code directly.",
+    "type": "library",
+    "license": "MIT",
+    "version": "0.9.0",
+    "authors": [
+        {
+            "name": "Romeo Pickering",
+            "email": "theoromeo@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "illuminate/support": "^10.0|^11.0|^12.0|^13.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pickering\\SvgAware\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Pickering\\SvgAware\\Providers\\SvgAwareServiceProvider"
+            ],
+            "aliases": {
+                "SvgAware": "Pickering\\SvgAware\\Facades\\Svg"
+            }
+        }
+    },
+    "minimum-stability": "beta",
+    "prefer-stable": true
+}
