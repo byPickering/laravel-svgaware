@@ -41,6 +41,7 @@ class SvgAwareService
         $svgContent = $this->getContent($fullPath);
 
         $svgContent = $this->replaceTags($svgContent, $attributes);
+        $svgContent = $this->purgeUnusedTags($svgContent);
 
         $contextDOM = new DOMDocument();
         $svgElement = $this->convertToElement($svgContent,$contextDOM);
@@ -100,6 +101,23 @@ class SvgAwareService
 
             $svgContent = str_replace("{{$tag}}"," {$attributes[$tag]} ",$svgContent);
             unset($attributes[$tag]);
+        }
+
+        return $svgContent;
+    }
+
+    private function purgeUnusedTags(string $svgContent)
+    {
+        $tagMatches = [];
+        preg_match_all("/\{([a-zA-Z0-9_]+)\}/",$svgContent,$tagMatches);
+        $tagMatches = $tagMatches[0] ?? [];
+
+        if(count($tagMatches) == 0)
+        return $svgContent;
+
+        foreach($tagMatches as $index => $tag)
+        {
+            $svgContent = str_replace($tag,"",$svgContent);
         }
 
         return $svgContent;
