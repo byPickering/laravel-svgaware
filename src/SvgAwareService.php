@@ -1,5 +1,5 @@
 <?php 
-namespace Pickering\SVGAware;
+namespace Pickering\SvgAware;
 
 use Illuminate\Support\Facades\File;
 use Exception;
