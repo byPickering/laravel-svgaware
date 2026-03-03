@@ -32,7 +32,8 @@ class SvgAwareService
         }
 
         
-        return $this->call(trim($args[0]),$attr);
+        $svgName = trim($args[0]);
+        return $this->call($svgName,$attr);
     }
 
     private function call(string &$name, array &$attributes = [], bool $asElement = false): string | DOMElement
