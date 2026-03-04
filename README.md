@@ -13,7 +13,7 @@ It allows you to render SVGs through Blade components, directives, or a Facade â
 Install via Composer:
 
 ```bash
-composer require pickering/laravel-svgaware
+composer require bypickering/laravel-svgaware
 ```
 
 ## Getting Started

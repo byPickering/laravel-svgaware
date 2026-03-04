@@ -1,5 +1,5 @@
 {
-    "name": "pickering/laravel-svgaware",
+    "name": "bypickering/laravel-svgaware",
     "description": "SVGAware simplifies SVG management in Laravel applications by eliminating duplicated markup and removing the need to edit complex SVG code directly.",
     "type": "library",
     "license": "MIT",
