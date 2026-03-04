@@ -3,7 +3,7 @@
 ![PHP Version](https://img.shields.io/badge/PHP-^8.1-blue)
 ![Laravel Version](https://img.shields.io/badge/Laravel-^10-red)
 ![License](https://img.shields.io/badge/License-MIT-white)
-![Version](https://img.shields.io/badge/Version-0.9.0%20Beta-green)
+![Version](https://img.shields.io/badge/Version-1.0.0-green)
 ![LinkedIn](https://img.shields.io/badge/LinkedIn-Romeo%20Pickering-blue?style=flat&logo=linkedin)
 
 SVGAware simplifies SVG management in Laravel applications by eliminating duplicated markup and removing the need to edit complex SVG code directly.

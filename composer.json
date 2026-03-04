@@ -3,7 +3,6 @@
     "description": "SVGAware simplifies SVG management in Laravel applications by eliminating duplicated markup and removing the need to edit complex SVG code directly.",
     "type": "library",
     "license": "MIT",
-    "version": "0.9.0",
     "authors": [
         {
             "name": "Romeo Pickering",
