@@ -19,15 +19,15 @@ class SvgAwareService
         if(isset($args[1]))
         {
             if(!$this->validateDirectiveAttributes($args[1]))
-            throw new InvalidArgumentException("Attributes passed to directive is not valid format.");
+            throw new InvalidArgumentException("Attributes passed to the directive are not in a valid format.");
             
            try {
                 $attr = eval("return {$args[1]};");
             } catch (Throwable $e) {
-                throw new InvalidArgumentException("Attributes declaration error in directive call: " . $e->getMessage());  
+                throw new InvalidArgumentException("Failed to parse directive attributes: " . $e->getMessage(), 0, $e);
             }
             if(!is_array($attr))
-            throw new InvalidArgumentException("Attributes compilation error, Please check formatting.");
+            throw new InvalidArgumentException("Attribute compilation failed. Please verify the directive's formatting.");
             
         }
 
@@ -80,7 +80,7 @@ class SvgAwareService
     private function getContent(string $fullPath): string
     {
         if(!File::exists($fullPath))
-        throw new RuntimeException("File Path: \"{$fullPath}\" does not exist");
+        throw new RuntimeException("Could not find file at: \"{$fullPath}\". Please verify the path exists and is readable.");
 
         return File::get($fullPath);
     }
@@ -126,12 +126,12 @@ class SvgAwareService
         libxml_clear_errors();
 
         if(!$isConverted)
-        throw new RuntimeException("Could not convert svg content to valid element, formatting error");
+        throw new RuntimeException("Unable to convert SVG to a valid element due to a syntax error. Please verify the XML structure.");
 
         $svgElements = $contextDOM->getElementsByTagName("svg");
 
         if($svgElements->count() === 0 )
-        throw new RuntimeException("Invalid SVG content: No <svg> root element found.");
+        throw new RuntimeException("SVG parsing failed: No root <svg> element detected in the provided content.");
 
         return $svgElements->item(0);
 
