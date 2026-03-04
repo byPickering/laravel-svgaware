@@ -2,11 +2,11 @@
 namespace Pickering\SvgAware;
 
 use Illuminate\Support\Facades\File;
-use Exception;
 use DOMDocument;
 use DOMElement;
+use InvalidArgumentException;
+use RuntimeException;
 use Throwable;
-
 
 class SvgAwareService
 {
@@ -19,15 +19,15 @@ class SvgAwareService
         if(isset($args[1]))
         {
             if(!$this->validateDirectiveAttributes($args[1]))
-            throw new Exception("Attributes passed to directive is not valid format.");
+            throw new InvalidArgumentException("Attributes passed to directive is not valid format.");
             
            try {
                 $attr = eval("return {$args[1]};");
             } catch (Throwable $e) {
-                throw new Exception("Attributes declaration error in directive call: " . $e->getMessage());  
+                throw new InvalidArgumentException("Attributes declaration error in directive call: " . $e->getMessage());  
             }
             if(!is_array($attr))
-            throw new Exception("Attributes compilation error, Please check formatting.");
+            throw new InvalidArgumentException("Attributes compilation error, Please check formatting.");
             
         }
 
@@ -80,7 +80,7 @@ class SvgAwareService
     private function getContent(string $fullPath): string
     {
         if(!File::exists($fullPath))
-        throw new Exception("File Path: \"{$fullPath}\" does not exist");
+        throw new RuntimeException("File Path: \"{$fullPath}\" does not exist");
 
         return File::get($fullPath);
     }
@@ -126,12 +126,12 @@ class SvgAwareService
         libxml_clear_errors();
 
         if(!$isConverted)
-        throw new Exception("Could not convert svg content to valid element, formatting error");
+        throw new RuntimeException("Could not convert svg content to valid element, formatting error");
 
         $svgElements = $contextDOM->getElementsByTagName("svg");
 
         if($svgElements->count() === 0 )
-        throw new Exception("Invalid SVG content: No <svg> root element found.");
+        throw new RuntimeException("Invalid SVG content: No <svg> root element found.");
 
         return $svgElements->item(0);
 
