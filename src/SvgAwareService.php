@@ -123,10 +123,17 @@ class SvgAwareService
     {
         libxml_use_internal_errors(true);
         $isConverted = $contextDOM->loadHTML("<div>{$svgContent}</div>", LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $libErrors = libxml_get_errors();
         libxml_clear_errors();
 
         if(!$isConverted)
-        throw new RuntimeException("Unable to convert SVG to a valid element due to a syntax error. Please verify the XML structure.");
+        throw new RuntimeException("Unable to convert SVG to a valid element. Please verify the XML structure.");
+
+        foreach($libErrors as $error)
+        {
+            if($error->code == 76 || $error->code == 77 || $error->code == 85)
+            throw new RuntimeException("Unable to convert SVG to a valid element due to a syntax error. Please verify the XML structure.");
+        }
 
         $svgElements = $contextDOM->getElementsByTagName("svg");
 
