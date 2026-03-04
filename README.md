@@ -17,6 +17,11 @@ Install via Composer:
 composer require bypickering/laravel-svgaware
 ```
 
+To publish the available config and add items to the purge list:
+```bash
+php artisan vendor:publish --tag=svgaware-config
+```
+
 ## Getting Started
 Place your .svg files inside:
 
