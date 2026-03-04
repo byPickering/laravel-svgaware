@@ -5,6 +5,7 @@
 ![License](https://img.shields.io/badge/License-MIT-white)
 ![Version](https://img.shields.io/badge/Version-0.9.0%20Beta-green)
 ![LinkedIn](https://img.shields.io/badge/LinkedIn-Romeo%20Pickering-blue?style=flat&logo=linkedin)
+
 SVGAware simplifies SVG management in Laravel applications by eliminating duplicated markup and removing the need to edit complex SVG code directly.
 
 It allows you to render SVGs through Blade components, directives, or a Facade — with full Tailwind CSS styling support.
