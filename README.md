@@ -1,4 +1,4 @@
-![SVGAware Logo White](./SVGAware-white.png)
+![SVGAware Logo White](./SVGAware-cover.png)
 
 ![PHP Version](https://img.shields.io/badge/PHP-^8.1-blue)
 ![Laravel Version](https://img.shields.io/badge/Laravel-^10-red)
